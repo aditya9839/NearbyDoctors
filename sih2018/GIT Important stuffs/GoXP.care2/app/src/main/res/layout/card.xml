@@ -44,20 +44,20 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textSize="15dp" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/textViewRating"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@id/textViewShortDesc"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--android:layout_toRightOf="@id/imageView"-->
-                <!--android:background="@color/colorPrimary"-->
-                <!--android:paddingLeft="15dp"-->
-                <!--android:paddingRight="15dp"-->
-                <!--android:text="4.7"-->
-                <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"-->
-                <!--android:textStyle="bold" />-->
+            <TextView
+                android:id="@+id/textViewRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewShortDesc"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/imageView"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="4.7"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewPrice"
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textViewShortDesc"
                 android:layout_marginLeft="130dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="25dp"
                 android:layout_toRightOf="@id/imageView"
                 android:text="INR 400"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
