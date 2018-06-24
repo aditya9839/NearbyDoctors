@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GoXP.care</string>
+    <string name="title_home">Book an appointment</string>
+    <string name="title_dashboard">List of Appointments</string>
+    <string name="profile">Your Profile</string>
+    <string name="chatting">Chat with Doctor</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
