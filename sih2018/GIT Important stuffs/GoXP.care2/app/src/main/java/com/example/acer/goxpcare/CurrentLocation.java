@@ -22,7 +22,7 @@ import java.util.List;
  * Created by acer on 25-Jun-18.
  */
 
-public class CurrentLocation extends Activity{
+public class CurrentLocation extends Activity {
     LocationManager l;
     String str;
     LocationListener locationListener;
@@ -71,7 +71,5 @@ public class CurrentLocation extends Activity{
                 l.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             }
         }
-
     }
-
 }

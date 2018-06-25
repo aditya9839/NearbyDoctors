@@ -25,7 +25,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LocationListener {
 
     private TextView mTextMessage;
     android.support.v4.app.FragmentTransaction fragmentTransaction;
@@ -84,13 +84,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         super.onBackPressed();
     }
 
     public void getLocation() {
         l = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 //        l.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+
+//        l.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+//
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -127,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
             public void onProviderDisabled(String s) {
             }
         };
+
         if (Build.VERSION.SDK_INT < 23) {
 //            l.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
         } else {
@@ -148,5 +153,25 @@ public class MainActivity extends AppCompatActivity {
                 l.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             }
         }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
     }
 }
