@@ -82,7 +82,7 @@ public class CurrentLocation {
                     .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
                         @Override
                         public void onConnected(Bundle bundle) {
-                            
+
                         }
                         @Override
                         public void onConnectionSuspended(int i) {
