@@ -21,6 +21,7 @@ public class Welcome extends AppCompatActivity {
             public void run() {
                 Intent homeIntent = new Intent(Welcome.this,MainActivity.class);
                 startActivity(homeIntent);
+                finish();
             }
         },SPLASH_TIME_OUT);
     }

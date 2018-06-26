@@ -1,13 +1,13 @@
 package com.example.acer.goxpcare;
 
-import android.Manifest;
-import android.app.Activity;
+/**
+ * Created by acer on 26-Jun-18.
+ */
+import android.content.Context;
 import android.content.IntentSender;
-import android.content.pm.PackageManager;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -23,71 +23,70 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 import java.util.List;
-/**
- * Created by acer on 25-Jun-18.
- */
 
-    //optimized code to getCurrent location or last known location but it will work if gps is on
+public class LocationOn extends AppCompatActivity {
 
-public class CurrentLocation {
-
-    private static GoogleApiClient googleApiClient;
-    private final static int REQUEST_LOCATION = 199;
+    protected static final String TAG = "LocationOnOff";
 
 
-    private static LocationManager mLocationManager;
-    private static Activity parentActivity;
+    private GoogleApiClient googleApiClient;
+    final static int REQUEST_LOCATION = 199;
 
-    public static Location  getLastKnownLocation(Activity parentActivity) {
-        CurrentLocation.parentActivity = parentActivity;
-        mLocationManager = (LocationManager) parentActivity.getSystemService(parentActivity.LOCATION_SERVICE);
-        List<String> providers = mLocationManager.getProviders(true);
-        Location bestLocation = null;
-        locationOn();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_welcome);
 
+        this.setFinishOnTouchOutside(true);
 
-        for (String provider : providers) {
-            if (ActivityCompat.checkSelfPermission(parentActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(parentActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(parentActivity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            }
-            Location l = mLocationManager.getLastKnownLocation(provider);
-            if (l == null) {
-                continue;
-            }
-            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                bestLocation = l;
-            }
-            double d = bestLocation.getLatitude();
-            double d1 = bestLocation.getLongitude();
-            Log.d("Location", "d :" + d + "  " + d1);
+        // Todo Location Already on  ... start
+        final LocationManager manager = (LocationManager) LocationOn.this.getSystemService(Context.LOCATION_SERVICE);
+        if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER) && hasGPSDevice(LocationOn.this)) {
+            Toast.makeText(LocationOn.this,"Gps already enabled",Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        // Todo Location Already on  ... end
+
+        if(!hasGPSDevice(LocationOn.this)){
+            Toast.makeText(LocationOn.this,"Gps not Supported",Toast.LENGTH_SHORT).show();
         }
 
-        return bestLocation;
-    }
-
-    public static void locationOn(){
-        //parentActivity.setFinishOnTouchOutside(true);
-
-        if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER) && hasGPSDevice(LocationOn.this)) {
             Log.e("keshav","Gps already enabled");
-            Toast.makeText(parentActivity,"Gps not enabled",Toast.LENGTH_SHORT).show();
+            Toast.makeText(LocationOn.this,"Gps not enabled",Toast.LENGTH_SHORT).show();
             enableLoc();
+        }else{
+            Log.e("keshav","Gps already enabled");
+            Toast.makeText(LocationOn.this,"Gps already enabled",Toast.LENGTH_SHORT).show();
         }
     }
-    private static void enableLoc() {
+
+
+    private boolean hasGPSDevice(Context context) {
+        final LocationManager mgr = (LocationManager) context
+                .getSystemService(Context.LOCATION_SERVICE);
+        if (mgr == null)
+            return false;
+        final List<String> providers = mgr.getAllProviders();
+        if (providers == null)
+            return false;
+        return providers.contains(LocationManager.GPS_PROVIDER);
+    }
+
+    private void enableLoc() {
 
         if (googleApiClient == null) {
-            googleApiClient = new GoogleApiClient.Builder(parentActivity)
+            googleApiClient = new GoogleApiClient.Builder(LocationOn.this)
                     .addApi(LocationServices.API)
                     .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
                         @Override
                         public void onConnected(Bundle bundle) {
-                            
+
                         }
+
                         @Override
                         public void onConnectionSuspended(int i) {
                             googleApiClient.connect();
-
                         }
                     })
                     .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
@@ -98,6 +97,7 @@ public class CurrentLocation {
                         }
                     }).build();
             googleApiClient.connect();
+
             LocationRequest locationRequest = LocationRequest.create();
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             locationRequest.setInterval(30 * 1000);
@@ -106,6 +106,7 @@ public class CurrentLocation {
                     .addLocationRequest(locationRequest);
 
             builder.setAlwaysShow(true);
+
             PendingResult<LocationSettingsResult> result =
                     LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
             result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
@@ -117,8 +118,11 @@ public class CurrentLocation {
                             try {
                                 // Show the dialog by calling startResolutionForResult(),
                                 // and check the result in onActivityResult().
-                                status.startResolutionForResult(parentActivity, REQUEST_LOCATION);
+                                status.startResolutionForResult(LocationOn.this, REQUEST_LOCATION);
+
+                                finish();
                             } catch (IntentSender.SendIntentException e) {
+                                // Ignore the error.
                             }
                             break;
                     }
@@ -126,4 +130,5 @@ public class CurrentLocation {
             });
         }
     }
+
 }

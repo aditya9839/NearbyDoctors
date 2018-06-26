@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -56,14 +57,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        CurrentLocation currentLocation = new CurrentLocation(this);
-        myLocation = currentLocation.getLastKnownLocation();
         doctorList = new DoctorList();
 
 //
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("location","asd");
+        CurrentLocation.getLastKnownLocation(this);
     }
 
     @Override
