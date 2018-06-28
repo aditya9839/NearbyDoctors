@@ -1,6 +1,7 @@
 package com.example.acer.goxpcare;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -70,6 +71,16 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         Log.d("location","asd");
         CurrentLocation.getLastKnownLocation(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CurrentLocation.REQUEST_LOCATION){
+            Log.d("Asdas","asd");
+            CurrentLocation.getLastKnownLocation(this);
+        }
+
     }
 
     @Override

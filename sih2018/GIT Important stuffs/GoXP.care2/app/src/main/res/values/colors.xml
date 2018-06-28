@@ -4,5 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="exp1">#5c5cce</color>
+    <color name="white">#ffffff</color>
     <color name="exp2">@color/colorAccent</color>
+    <color name="ButtonColor">#d9212a</color>
+    <color name="black">#252121</color>
+    <color name="grey">#737070</color>
 </resources>

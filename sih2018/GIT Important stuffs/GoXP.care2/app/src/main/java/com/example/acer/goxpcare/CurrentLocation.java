@@ -32,7 +32,7 @@ import java.util.List;
 public class CurrentLocation {
 
     private static GoogleApiClient googleApiClient;
-    private final static int REQUEST_LOCATION = 199;
+     final static int REQUEST_LOCATION = 199;
 
 
     private static LocationManager mLocationManager;
@@ -43,8 +43,8 @@ public class CurrentLocation {
         mLocationManager = (LocationManager) parentActivity.getSystemService(parentActivity.LOCATION_SERVICE);
         List<String> providers = mLocationManager.getProviders(true);
         Location bestLocation = null;
-        locationOn();
 
+        locationOn();
 
         for (String provider : providers) {
             if (ActivityCompat.checkSelfPermission(parentActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(parentActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -61,7 +61,7 @@ public class CurrentLocation {
             double d1 = bestLocation.getLongitude();
             Log.d("Location", "d :" + d + "  " + d1);
         }
-
+        Log.d("loc",""+bestLocation);
         return bestLocation;
     }
 
@@ -86,6 +86,7 @@ public class CurrentLocation {
                         }
                         @Override
                         public void onConnectionSuspended(int i) {
+                            Log.d("suspended","");
                             googleApiClient.connect();
 
                         }
@@ -111,9 +112,14 @@ public class CurrentLocation {
             result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
                 @Override
                 public void onResult(LocationSettingsResult result) {
+                    Log.d("REs",""+result);
                     final Status status = result.getStatus();
+                    Log.d("REs",""+status);
+
                     switch (status.getStatusCode()) {
+
                         case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            Log.d("REs",""+status);
                             try {
                                 // Show the dialog by calling startResolutionForResult(),
                                 // and check the result in onActivityResult().
