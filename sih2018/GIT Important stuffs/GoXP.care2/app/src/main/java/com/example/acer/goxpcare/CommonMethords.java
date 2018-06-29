@@ -5,4 +5,7 @@ package com.example.acer.goxpcare;
  */
 
 public class CommonMethords {
+    public static void closeButton(){
+
+    }
 }

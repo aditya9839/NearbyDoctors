@@ -58,7 +58,7 @@
                     android:paddingBottom="20dp">
 
                     <EditText
-                        android:id="@+id/fullname"
+                        android:id="@+id/signupfullname"
                         android:textSize="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:text="Login"
+                    android:text="Sign Up"
                     android:textColor="@color/white"
                     android:fontFamily="sans-serif-smallcaps"
                     android:background="@drawable/loginfragmentbutton"/>
