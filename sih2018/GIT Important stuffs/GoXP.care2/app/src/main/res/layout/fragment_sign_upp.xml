@@ -1,0 +1,139 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.acer.goxpcare.Login"
+    android:background="@color/black">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:background="@drawable/loginlayout">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+            <!-- ADDED SPACER VIEW -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="34dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@color/white"
+                android:text="X"
+                android:textColor="@color/grey"
+                android:textSize="15dp" />
+        </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/fullnamelayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:padding="15dp"
+                    android:paddingBottom="20dp">
+
+                    <EditText
+                        android:id="@+id/fullname"
+                        android:textSize="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Full Name"
+                        android:inputType="textPersonName" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/emaillayout"
+                    android:layout_width="match_parent"
+                    android:paddingBottom="20dp"
+                    android:padding="15dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:textSize="15dp"
+                        android:id="@+id/input_email"
+                        android:inputType="textEmailAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/paswordd"
+                    android:layout_width="match_parent"
+                    android:paddingBottom="20dp"
+                    android:padding="15dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:textSize="15dp"
+                        android:id="@+id/input_password"
+                        android:inputType="textPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/pasword"
+                    android:layout_width="match_parent"
+                    android:paddingBottom="20dp"
+                    android:padding="15dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:textSize="15dp"
+                        android:id="@+id/input_name"
+                        android:inputType="textPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Confirm Password" />
+                </android.support.design.widget.TextInputLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forgot Password?"
+                    android:textSize="15dp"
+                    android:textColor="@color/exp1"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:layout_width="121dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:text="Login"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:background="@drawable/loginfragmentbutton"/>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</LinearLayout>
