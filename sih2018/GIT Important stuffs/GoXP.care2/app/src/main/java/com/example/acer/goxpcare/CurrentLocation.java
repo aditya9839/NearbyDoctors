@@ -2,6 +2,7 @@ package com.example.acer.goxpcare;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -40,7 +41,7 @@ public class CurrentLocation {
 
     public static Location  getLastKnownLocation(Activity parentActivity) {
         CurrentLocation.parentActivity = parentActivity;
-        mLocationManager = (LocationManager) parentActivity.getSystemService(parentActivity.LOCATION_SERVICE);
+        mLocationManager = (LocationManager) parentActivity.getSystemService(Context.LOCATION_SERVICE);
         List<String> providers = mLocationManager.getProviders(true);
         Location bestLocation = null;
 

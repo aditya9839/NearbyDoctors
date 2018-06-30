@@ -35,6 +35,7 @@ public class LoginSignUpPage extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 login = new Login();
+                login.referance(LoginSignUpPage.this);
 //
                 transaction = fragmentManager.beginTransaction();
 
@@ -49,6 +50,7 @@ public class LoginSignUpPage extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 signUpp = new SignUpp();
+                signUpp.referance(LoginSignUpPage.this);
 //
                 transaction = fragmentManager.beginTransaction();
 

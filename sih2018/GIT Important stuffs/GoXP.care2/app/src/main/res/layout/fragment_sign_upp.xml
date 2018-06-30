@@ -17,7 +17,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="Sign Up"
                 android:textColor="@color/black"
                 android:padding="10dp"
                 android:textSize="20dp"
@@ -29,6 +29,7 @@
                 android:layout_weight="1" />
 
             <Button
+                android:id="@+id/closebuttonsignup"
                 style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="34dp"
                 android:layout_height="wrap_content"
@@ -57,7 +58,7 @@
                     android:padding="15dp"
                     android:paddingBottom="20dp">
 
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:id="@+id/signupfullname"
                         android:textSize="15dp"
                         android:layout_width="match_parent"
@@ -74,7 +75,7 @@
                     android:layout_marginTop="0dp"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:textSize="15dp"
                         android:id="@+id/input_email"
                         android:inputType="textEmailAddress"
@@ -90,7 +91,7 @@
                     android:layout_marginTop="0dp"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:textSize="15dp"
                         android:id="@+id/input_password"
                         android:inputType="textPassword"
@@ -106,7 +107,7 @@
                     android:layout_marginTop="0dp"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <android.support.design.widget.TextInputEditText
                         android:textSize="15dp"
                         android:id="@+id/input_name"
                         android:inputType="textPassword"
@@ -130,7 +131,6 @@
                     android:layout_marginTop="30dp"
                     android:text="Sign Up"
                     android:textColor="@color/white"
-                    android:fontFamily="sans-serif-smallcaps"
                     android:background="@drawable/loginfragmentbutton"/>
             </LinearLayout>
         </ScrollView>

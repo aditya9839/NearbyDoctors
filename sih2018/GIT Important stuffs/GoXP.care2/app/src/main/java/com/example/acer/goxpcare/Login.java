@@ -1,7 +1,9 @@
 package com.example.acer.goxpcare;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -17,27 +19,30 @@ import android.widget.EditText;
 
 public class Login extends Fragment {
 
-    Button mclose;
+    Button eclosebuttonlogin;
     TextInputEditText eloginemail5;
-
     View inflatedView = null;
-    KeyListener originalKeyListener;
+     Activity parentActivity;
 
-    public Login() {
-
-
+    public void referance(Activity activity){
+        this.parentActivity = activity;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
         eloginemail5 = inflatedView.findViewById(R.id.loginemail5);
 //        eloginemail5.setKeyListener(originalKeyListener);
         eloginemail5.requestFocus();
         eloginemail5.setFocusableInTouchMode(true);
+        new Handler().postDelayed(new Runnable(){
 
-        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(eloginemail5, InputMethodManager.SHOW_IMPLICIT);
+            @Override
+            public void run() {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(eloginemail5, InputMethodManager.SHOW_IMPLICIT);
+            }
+        },500);
     }
 
     @Override
@@ -47,10 +52,16 @@ public class Login extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         this.inflatedView = view;
-        mclose = inflatedView.findViewById(R.id.closebutton);
+        eclosebuttonlogin = inflatedView.findViewById(R.id.closebuttonlogin);
+        eclosebuttonlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                parentActivity.onBackPressed();
+            }
+        });
 
         return view;
-
     }
+
 
 }
